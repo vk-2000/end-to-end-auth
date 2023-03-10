@@ -4,8 +4,8 @@ const redisUtils = require('../utils/redisUtils');
 const HTTPError = require('../utils/errors/HTTPError');
 
 
-const loginUser = async (username, password) => {
-    const user = await User.findOne({ where: { username } });
+const loginUser = async (email, password) => {
+    const user = await User.findOne({ where: { email } });
     if (!user) {
         throw new HTTPError('User not found');
     }

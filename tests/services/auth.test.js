@@ -14,19 +14,19 @@ describe('auth services', () => {
                 set: jest.fn().mockResolvedValue(true)
             });
             jest.spyOn(jwt, 'sign').mockReturnValue('token');
-            const response = await authServices.loginUser('username', 'password');
+            const response = await authServices.loginUser('email', 'password');
             expect(response).toBe('token');
         });
         it('should throw an error if user not found', async () => {
             jest.spyOn(User, 'findOne').mockResolvedValue(null);
-            await expect(authServices.loginUser('username', 'password')).rejects.toThrow('User not found');
+            await expect(authServices.loginUser('email', 'password')).rejects.toThrow('User not found');
         });
         it('should throw an error if password is incorrect', async () => {
             jest.spyOn(User, 'findOne').mockResolvedValue({
                 id: 1,
                 validatePassword: jest.fn().mockResolvedValue(false)
             });
-            await expect(authServices.loginUser('username', 'password')).rejects.toThrow('Password incorrect');
+            await expect(authServices.loginUser('email', 'password')).rejects.toThrow('Password incorrect');
         });
     });
     describe('verifyToken', () => {

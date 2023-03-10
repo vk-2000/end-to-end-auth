@@ -1,4 +1,3 @@
-const authSchema = require('../schemas/auth.schema');
 const HTTPError = require('../utils/errors/HTTPError');
 
 const tokenValidation = (schema) => (req, res, next) => {
@@ -14,10 +13,10 @@ const tokenValidation = (schema) => (req, res, next) => {
     }
     catch(err){
         if(err instanceof HTTPError){
-            res.status(err.code).send(err.message);
+            res.status(err.code).send({message: err.message});
         }
         else{
-            res.status(500).send(err.message);
+            res.status(500).send({message: err.message});
         }
     }
 };
@@ -32,10 +31,10 @@ const bodyValidation = (schema) => (req, res, next) => {
     }
     catch(err){
         if(err instanceof HTTPError){
-            res.status(err.code).send(err.message);
+            res.status(err.code).send({message: err.message});
         }
         else{
-            res.status(500).send(err.message);
+            res.status(500).send({message: err.message});
         }
     }
 };

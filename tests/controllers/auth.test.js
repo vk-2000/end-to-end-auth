@@ -7,7 +7,7 @@ describe('Auth Controller', () => {
             jest.spyOn(authService, 'loginUser').mockResolvedValue('token');
             const req = {
                 body: {
-                    username: 'username',
+                    email: 'email',
                     password: 'password'
                 }
             };
@@ -22,7 +22,7 @@ describe('Auth Controller', () => {
             jest.spyOn(authService, 'loginUser').mockRejectedValue(new Error('error'));
             const req = {
                 body: {
-                    username: 'username',
+                    email: 'email',
                     password: 'password'
                 }
             };
@@ -36,7 +36,7 @@ describe('Auth Controller', () => {
     });
     describe('verifyToken', () => {
         it('should return a valid token', async () => {
-            jest.spyOn(authService, 'verifyToken').mockResolvedValue({ id: 1, username: 'username' });
+            jest.spyOn(authService, 'verifyToken').mockResolvedValue({ id: 1, email: 'email' });
             const req = {
                 headers: {
                     authorization: 'token'

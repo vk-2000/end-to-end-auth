@@ -59,7 +59,7 @@ describe('schemaValidation', () => {
         it('should send response with status code 400 when body is not valid', async () => {
             const req = {
                 body: {
-                    username: 'username',
+                    email: 'email',
                     password: 'password'
                 }
             };
@@ -77,7 +77,7 @@ describe('schemaValidation', () => {
         it('should call next when body is valid', async () => {
             const req = {
                 body: {
-                    username: 'username',
+                    email: 'email',
                     password: 'password'
                 }
             };
@@ -95,7 +95,7 @@ describe('schemaValidation', () => {
         it('should send response with status code 500 when an error occurs', async () => {
             const req = {
                 body: {
-                    username: 'username',
+                    email: 'email',
                     password: 'password'
                 }
             };
